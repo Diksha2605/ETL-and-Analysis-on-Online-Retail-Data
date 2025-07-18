@@ -1,98 +1,85 @@
+# 🛍️ ETL and Analysis on Online Retail Data using PySpark
 
-🛍️ ETL and Analysis on Online Retail Data
+This project demonstrates a complete ETL (Extract, Transform, Load) pipeline and data analysis on an **e-commerce retail dataset** using **PySpark**, with additional visualizations in **Matplotlib**. It aims to identify customer behavior, top products, sales trends, and customer segmentation to derive actionable business insights.
 
-This project demonstrates a comprehensive ETL (Extract, Transform, Load) pipeline and exploratory data analysis (EDA) using PySpark, Pandas, and Matplotlib on an e-commerce dataset. It includes customer segmentation, product analysis, sales trends, and key visualizations to extract meaningful business insights.
-🚀 Project Overview
+---
 
-The goal of this project is to:
+## 🚀 Project Overview
 
-    Perform data cleaning and transformation using PySpark
+The main objectives of this project are:
 
-    Engineer useful features like purchase frequency and total order value
+- ✅ Perform data extraction, cleaning, and transformation on retail data using PySpark.
+- 📊 Analyze customer behavior, sales trends, and best-selling products.
+- 🧠 Segment customers into B2B and B2C based on their purchasing frequency.
+- 📈 Visualize sales patterns monthly and weekly to identify peak periods.
 
-    Identify customer segments (B2B and B2C)
+---
 
-    Analyze top-se
+## 📂 Dataset Used
 
-    lling products and sales trends
+- **Name:** Online Retail Dataset
+- **Source:** UCI Machine Learning Repository
+- **Description:** Transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.
 
-    Visualize findings using Python-based tools
+---
 
-📁 Dataset
+## 🧰 Technologies & Tools
 
-    Dataset: Online Retail.csv
+- Apache Spark (PySpark)
+- Python (Pandas, Matplotlib)
+- Google Colab / Databricks
+- Jupyter Notebook environment
 
-    Source: UCI Machine Learning Repository
+---
 
-    Description: Historical transactional data from a UK-based online retail store between 2010 and 2011.
+## 🔧 Steps Performed
 
-🧰 Tech Stack
-Tool/Library	Purpose
-PySpark	Distributed processing & ETL
-Pandas	Data manipulation
-Matplotlib	Data visualization
-Databricks Community Edition	Execution environment
-📊 Key Analyses Performed
-✅ ETL Process
+### 1. **Data Loading and Schema Inference**
+- Loaded CSV using `spark.read.csv()` with schema inference.
 
-    Null value handling and type casting
+### 2. **Data Cleaning**
+- Dropped rows with missing values.
+- Cast data types (`Quantity`, `UnitPrice`, `InvoiceDate`).
+- Created `TotalValue` for each transaction.
 
-    Total order value calculation
+### 3. **Feature Engineering**
+- Extracted `Year`, `Month`, and `DayOfWeek` from `InvoiceDate`.
+- Calculated `PurchaseCount` per customer.
+- Added customer segmentation: `B2B` vs `B2C`.
 
-    Date formatting for time-series analysis
+### 4. **Data Analysis**
+- Top 10 best-selling products
+- Monthly and weekly sales trends
+- Average order value per customer
+- Sales distribution by customer type
 
-✅ Feature Engineering
+### 5. **Visualization**
+- Horizontal bar charts for top products
+- Line plot for monthly sales
+- Pie chart for B2B vs B2C distribution
+- Bar chart for weekly sales
 
-    Customer purchase frequency
+---
 
-    B2B vs B2C customer segmentation
+## 📊 Sample Outputs
 
-    Year and Month extraction from timestamps
+| Analysis Type | Output Example |
+|---------------|----------------|
+| Top Products | ![Top Products](#) |
+| Monthly Sales Trend | ![Monthly Sales](#) |
+| Customer Type Distribution | ![Customer Pie](#) |
+| Weekly Sales | ![Weekly Sales](#) |
 
-✅ Visual Insights
+---
 
-    📈 Top 10 Best-Selling Products
+## 📈 Key Insights
 
-    📆 Monthly Sales Trends
+- 📌 **B2B customers** contribute more frequently to transactions.
+- 🥇 Certain products dominate the sales volume (e.g., gift items).
+- 🗓️ **November and December** see peak sales, indicating seasonal trends.
+- 📅 Most sales happen mid-week (Tuesday to Thursday).
 
-    🧍 Customer Type Distribution (B2B vs B2C)
+---
 
-    📅 Sales by Day of the Week
+## 📁 Project Structure
 
-    💰 Average Order Value by Customer
-
-📸 Sample Visualizations
-<img src="https://github.com/your-username/your-repo-name/blob/main/images/top_products.png" width="500"/> <p align="center">Top 10 Best-Selling Products</p> <img src="https://github.com/your-username/your-repo-name/blob/main/images/monthly_sales.png" width="500"/> <p align="center">Monthly Sales Trend</p>
-
-    Note: Add generated plots to a folder named images/ and update the image links above.
-
-📦 Setup Instructions
-
-    Clone the repo:
-
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-
-Install required Python libraries:
-
-pip install pyspark pandas matplotlib
-
-Run the script:
-
-    python etl_and_analysis_on_online_retail_data.py
-
-    ⚠️ Ensure you have Java and Spark installed and properly configured.
-
-💡 Future Enhancements
-
-    Build predictive models for customer churn or product demand
-
-    Automate ETL via Airflow or Apache NiFi
-
-    Integrate with cloud-based storage (S3, GCS)
-
-🙌 Acknowledgments
-
-    Dataset: UCI Machine Learning Repository
-
-    Author: Diksha
