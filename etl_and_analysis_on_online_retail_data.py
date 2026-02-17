@@ -1,67 +1,59 @@
-# ETL and Analysis on Online Retail Data
+import pandas as pd
+from sqlalchemy import create_engine
 
-End-to-end ETL and analytical pipeline built using PySpark for large-scale e-commerce transaction data.
 
-## Overview
-This repository contains a Spark-based ETL workflow and analytical pipeline designed to process, clean, and analyze online retail transaction data. The project focuses on scalable data processing, structured transformations, and reproducible analysis to derive reliable business insights from raw transactional data.
 
-## Dataset
-Source: UCI Machine Learning Repository  
-Domain: Online retail transactions  
-Time period: December 2010 – December 2011  
+# Define source and destination details
 
-The dataset includes invoice-level records with product, quantity, pricing, and customer identifiers.
+source_connection_string = "sqlite:///source.db"  # Replace with your source connection string (e.g., CSV, database)
+destination_connection_string = "sqlite:///destination.db"  # Replace with your destination connection string (database)
+source_table = "users"  # Replace with your source table name
+destination_table = "users"  # Replace with your destination table name
 
-## Pipeline
-Extract  
-Transform  
-Validate  
-Analyze  
 
-Each stage is implemented using PySpark to support distributed processing and scalability.
 
-## Processing Steps
+# Extract data from the source
 
-### Data Ingestion
-Raw CSV data is loaded using Spark’s DataFrame API with schema inference enabled to ensure structured access to fields.
+def extract_data_from_source1():
+    engine = create_engine(source_connection_string)
+    source_1 = pd.read_sql_query(f"SELECT * FROM {source_table}", engine)
+    return source_1
 
-### Data Cleaning
-Invalid and incomplete records are removed. Data types for numerical and temporal fields are explicitly cast, and transaction-level total value is computed to support downstream analysis.
+def extract_data_from_source2():
+    engine = create_engine(source_connection_string)
+    source_2 = pd.read_sql_query(f"SELECT * FROM {source_table}", engine)
+    return source_2 
 
-### Feature Engineering
-Temporal features (year, month, day of week) are derived from invoice timestamps. Customer-level purchase frequency is computed and used to segment customers into business and consumer groups.
 
-### Analysis
-The pipeline computes product-level sales volume, customer-level order statistics, and temporal sales trends. Aggregations are performed to support both exploratory analysis and business interpretation.
 
-### Visualization
-Aggregated results are visualized using Matplotlib to highlight sales trends, customer distribution, and product performance.
+# Transform data (cleaning, calculations, etc.)
 
-## Outputs
-Cleaned and validated transaction dataset  
-Aggregated sales metrics  
-Customer segmentation results  
-Temporal trend visualizations  
+def transform_data(data_from_source1, data_from_source2):
+    # Perform data cleaning, standardization, calculations, etc.
+    transformed_data = data_from_source1.copy()  # Avoid modifying the original DataFrame
+    transformed_data["new_column"] = data_from_source1["existing_column"] * 2  # Example transformation
+    return transformed_data
 
-## Technology Stack
-Python  
-Apache Spark (PySpark)  
-Pandas  
-Matplotlib  
 
-## Repository Structure
-ETL-and-Analysis-on-Online-Retail-Data/
-├── notebooks/
-├── data/
-├── outputs/
-├── README.md
-└── requirements.txt
 
-## Purpose
-The project demonstrates the use of distributed data processing to build reliable ETL pipelines and perform structured analytics on real-world retail data. It emphasizes data quality, scalability, and reproducibility rather than ad-hoc analysis.
+# Load data to the destination
 
-## Author
-Diksha Singh  
-Data Scientist – ML Reliability & Data Quality  
-LinkedIn: https://www.linkedin.com/in/diksha-singh30  
-GitHub: https://github.com/Diksha2605
+def load_data(transformed_data):
+    # Load data to the destination using SQLAlchemy
+    destination_engine = create_engine(destination_connection_string)
+    transformed_data.to_sql(destination_table, destination_engine, index=False, if_exists='replace')
+    return transformed_data
+
+
+
+def run_etl():
+    # Call extract, transform, and load functions in sequence
+    data_from_source1 = extract_data_from_source1()
+    data_from_source2 = extract_data_from_source2()
+    # ... extract from other sources if needed
+
+    transformed_data = transform_data(data_from_source1, data_from_source2, ...)
+
+    load_data(transformed_data)
+
+    print("ETL process completed successfully!")
