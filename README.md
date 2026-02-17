@@ -1,85 +1,137 @@
-# 🛍️ ETL and Analysis on Online Retail Data using PySpark
+🛍️ ETL and Analysis on Online Retail Data (PySpark)
 
-This project demonstrates a complete ETL (Extract, Transform, Load) pipeline and data analysis on an **e-commerce retail dataset** using **PySpark**, with additional visualizations in **Matplotlib**. It aims to identify customer behavior, top products, sales trends, and customer segmentation to derive actionable business insights.
+End-to-end ETL and analytics pipeline built using PySpark to analyze large-scale e-commerce transaction data and derive business insights.
 
----
+Overview
 
-## 🚀 Project Overview
+This project demonstrates a complete Extract–Transform–Load (ETL) workflow and analytical pipeline on an online retail dataset using PySpark, with supporting visualizations in Matplotlib.
 
-The main objectives of this project are:
+The focus is on scalable data processing, feature engineering, and structured analysis to understand customer behavior, sales trends, and product performance.
 
-- ✅ Perform data extraction, cleaning, and transformation on retail data using PySpark.
-- 📊 Analyze customer behavior, sales trends, and best-selling products.
-- 🧠 Segment customers into B2B and B2C based on their purchasing frequency.
-- 📈 Visualize sales patterns monthly and weekly to identify peak periods.
+Problem Context
 
----
+E-commerce transaction data is typically:
 
-## 📂 Dataset Used
+Large in volume
 
-- **Name:** Online Retail Dataset
-- **Source:** UCI Machine Learning Repository
-- **Description:** Transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.
+Noisy and inconsistent
 
----
+Difficult to analyze without distributed processing
 
-## 🧰 Technologies & Tools
+This project uses Spark-based ETL to clean, transform, and analyze retail data efficiently while maintaining analytical reliability.
 
-- Apache Spark (PySpark)
-- Python (Pandas, Matplotlib)
-- Google Colab / Databricks
-- Jupyter Notebook environment
+Dataset
 
----
+Online Retail Dataset
+Source: UCI Machine Learning Repository
 
-## 🔧 Steps Performed
+UK-based online retail transactions
 
-### 1. **Data Loading and Schema Inference**
-- Loaded CSV using `spark.read.csv()` with schema inference.
+Time period: December 2010 – December 2011
 
-### 2. **Data Cleaning**
-- Dropped rows with missing values.
-- Cast data types (`Quantity`, `UnitPrice`, `InvoiceDate`).
-- Created `TotalValue` for each transaction.
+Contains invoices, products, quantities, prices, and customer identifiers
 
-### 3. **Feature Engineering**
-- Extracted `Year`, `Month`, and `DayOfWeek` from `InvoiceDate`.
-- Calculated `PurchaseCount` per customer.
-- Added customer segmentation: `B2B` vs `B2C`.
+Pipeline Flow
 
-### 4. **Data Analysis**
-- Top 10 best-selling products
-- Monthly and weekly sales trends
-- Average order value per customer
-- Sales distribution by customer type
+Extract
+→ Clean
+→ Transform
+→ Feature Engineering
+→ Analyze
+→ Visualize
 
-### 5. **Visualization**
-- Horizontal bar charts for top products
-- Line plot for monthly sales
-- Pie chart for B2B vs B2C distribution
-- Bar chart for weekly sales
+Each stage is designed to be reproducible and scalable.
 
----
+What This Project Does
+Data Loading
 
-## 📊 Sample Outputs
+Loaded CSV data using spark.read.csv()
 
-| Analysis Type | Output Example |
-|---------------|----------------|
-| Top Products | ![Top Products](#) |
-| Monthly Sales Trend | ![Monthly Sales](#) |
-| Customer Type Distribution | ![Customer Pie](#) |
-| Weekly Sales | ![Weekly Sales](#) |
+Applied schema inference for structured processing
 
----
+Data Cleaning
 
-## 📈 Key Insights
+Removed rows with missing values
 
-- 📌 **B2B customers** contribute more frequently to transactions.
-- 🥇 Certain products dominate the sales volume (e.g., gift items).
-- 🗓️ **November and December** see peak sales, indicating seasonal trends.
-- 📅 Most sales happen mid-week (Tuesday to Thursday).
+Casted data types for quantity, price, and invoice date
 
----
+Created transaction-level TotalValue feature
 
-## 📁 Project Structure
+Feature Engineering
 
+Extracted Year, Month, and Day of Week from invoice dates
+
+Computed PurchaseCount per customer
+
+Segmented customers into B2B and B2C based on purchasing frequency
+
+Data Analysis
+
+Identified top 10 best-selling products
+
+Analyzed monthly and weekly sales trends
+
+Calculated average order value per customer
+
+Compared sales distribution across customer segments
+
+Visualization
+
+Bar charts for top-selling products
+
+Line plots for monthly sales trends
+
+Pie chart for B2B vs B2C customer distribution
+
+Bar chart for weekly sales patterns
+
+Key Insights
+
+B2B customers contribute more frequently to transactions
+
+A small set of products dominates overall sales volume
+
+Sales peak during November and December, indicating seasonality
+
+Most transactions occur mid-week (Tuesday–Thursday)
+
+Tech Stack
+
+Apache Spark (PySpark)
+
+Python
+
+Pandas
+
+Matplotlib
+
+Jupyter Notebook / Google Colab / Databricks
+
+Project Structure
+ETL-and-Analysis-on-Online-Retail-Data/
+│
+├── notebooks/        # PySpark analysis notebooks
+├── data/             # Dataset files
+├── outputs/          # Generated plots and results
+├── README.md         # Project documentation
+└── requirements.txt  # Dependencies
+
+Why This Matters
+
+This project demonstrates the ability to:
+
+Handle large-scale structured data
+
+Build Spark-based ETL workflows
+
+Perform business-focused analytics on real-world data
+
+These skills are essential for data engineering, analytics, and ML-adjacent roles.
+
+Author
+
+Diksha Singh
+Data Scientist | ML Reliability & Data Quality Engineering
+LinkedIn: https://www.linkedin.com/in/diksha-singh30
+
+GitHub: https://github.com/Diksha2605
