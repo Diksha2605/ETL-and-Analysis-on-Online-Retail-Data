@@ -1,137 +1,67 @@
-🛍️ ETL and Analysis on Online Retail Data (PySpark)
+# ETL and Analysis on Online Retail Data
 
-End-to-end ETL and analytics pipeline built using PySpark to analyze large-scale e-commerce transaction data and derive business insights.
+End-to-end ETL and analytical pipeline built using PySpark for large-scale e-commerce transaction data.
 
-Overview
+## Overview
+This repository contains a Spark-based ETL workflow and analytical pipeline designed to process, clean, and analyze online retail transaction data. The project focuses on scalable data processing, structured transformations, and reproducible analysis to derive reliable business insights from raw transactional data.
 
-This project demonstrates a complete Extract–Transform–Load (ETL) workflow and analytical pipeline on an online retail dataset using PySpark, with supporting visualizations in Matplotlib.
+## Dataset
+Source: UCI Machine Learning Repository  
+Domain: Online retail transactions  
+Time period: December 2010 – December 2011  
 
-The focus is on scalable data processing, feature engineering, and structured analysis to understand customer behavior, sales trends, and product performance.
+The dataset includes invoice-level records with product, quantity, pricing, and customer identifiers.
 
-Problem Context
+## Pipeline
+Extract  
+Transform  
+Validate  
+Analyze  
 
-E-commerce transaction data is typically:
+Each stage is implemented using PySpark to support distributed processing and scalability.
 
-Large in volume
+## Processing Steps
 
-Noisy and inconsistent
+### Data Ingestion
+Raw CSV data is loaded using Spark’s DataFrame API with schema inference enabled to ensure structured access to fields.
 
-Difficult to analyze without distributed processing
+### Data Cleaning
+Invalid and incomplete records are removed. Data types for numerical and temporal fields are explicitly cast, and transaction-level total value is computed to support downstream analysis.
 
-This project uses Spark-based ETL to clean, transform, and analyze retail data efficiently while maintaining analytical reliability.
+### Feature Engineering
+Temporal features (year, month, day of week) are derived from invoice timestamps. Customer-level purchase frequency is computed and used to segment customers into business and consumer groups.
 
-Dataset
+### Analysis
+The pipeline computes product-level sales volume, customer-level order statistics, and temporal sales trends. Aggregations are performed to support both exploratory analysis and business interpretation.
 
-Online Retail Dataset
-Source: UCI Machine Learning Repository
+### Visualization
+Aggregated results are visualized using Matplotlib to highlight sales trends, customer distribution, and product performance.
 
-UK-based online retail transactions
+## Outputs
+Cleaned and validated transaction dataset  
+Aggregated sales metrics  
+Customer segmentation results  
+Temporal trend visualizations  
 
-Time period: December 2010 – December 2011
+## Technology Stack
+Python  
+Apache Spark (PySpark)  
+Pandas  
+Matplotlib  
 
-Contains invoices, products, quantities, prices, and customer identifiers
-
-Pipeline Flow
-
-Extract
-→ Clean
-→ Transform
-→ Feature Engineering
-→ Analyze
-→ Visualize
-
-Each stage is designed to be reproducible and scalable.
-
-What This Project Does
-Data Loading
-
-Loaded CSV data using spark.read.csv()
-
-Applied schema inference for structured processing
-
-Data Cleaning
-
-Removed rows with missing values
-
-Casted data types for quantity, price, and invoice date
-
-Created transaction-level TotalValue feature
-
-Feature Engineering
-
-Extracted Year, Month, and Day of Week from invoice dates
-
-Computed PurchaseCount per customer
-
-Segmented customers into B2B and B2C based on purchasing frequency
-
-Data Analysis
-
-Identified top 10 best-selling products
-
-Analyzed monthly and weekly sales trends
-
-Calculated average order value per customer
-
-Compared sales distribution across customer segments
-
-Visualization
-
-Bar charts for top-selling products
-
-Line plots for monthly sales trends
-
-Pie chart for B2B vs B2C customer distribution
-
-Bar chart for weekly sales patterns
-
-Key Insights
-
-B2B customers contribute more frequently to transactions
-
-A small set of products dominates overall sales volume
-
-Sales peak during November and December, indicating seasonality
-
-Most transactions occur mid-week (Tuesday–Thursday)
-
-Tech Stack
-
-Apache Spark (PySpark)
-
-Python
-
-Pandas
-
-Matplotlib
-
-Jupyter Notebook / Google Colab / Databricks
-
-Project Structure
+## Repository Structure
 ETL-and-Analysis-on-Online-Retail-Data/
-│
-├── notebooks/        # PySpark analysis notebooks
-├── data/             # Dataset files
-├── outputs/          # Generated plots and results
-├── README.md         # Project documentation
-└── requirements.txt  # Dependencies
+├── notebooks/
+├── data/
+├── outputs/
+├── README.md
+└── requirements.txt
 
-Why This Matters
+## Purpose
+The project demonstrates the use of distributed data processing to build reliable ETL pipelines and perform structured analytics on real-world retail data. It emphasizes data quality, scalability, and reproducibility rather than ad-hoc analysis.
 
-This project demonstrates the ability to:
-
-Handle large-scale structured data
-
-Build Spark-based ETL workflows
-
-Perform business-focused analytics on real-world data
-
-These skills are essential for data engineering, analytics, and ML-adjacent roles.
-
-Author
-
-Diksha Singh
-Data Scientist | ML Reliability & Data Quality Engineering
-LinkedIn: https://www.linkedin.com/in/diksha-singh30
-
+## Author
+Diksha Singh  
+Data Scientist – ML Reliability & Data Quality  
+LinkedIn: https://www.linkedin.com/in/diksha-singh30  
 GitHub: https://github.com/Diksha2605
